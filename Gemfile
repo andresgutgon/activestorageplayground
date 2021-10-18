@@ -21,9 +21,6 @@ gem "turbo-rails", ">= 0.7.11"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails", ">= 0.4.0"
 
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder", "~> 2.7"
-
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
@@ -36,15 +33,12 @@ gem "bootsnap", ">= 1.4.4", require: false
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
-# Use Sass to process CSS
-# gem "sassc-rails", "~> 2.1"
-
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # Start debugger with binding.b [https://github.com/ruby/debug]
-  gem "debug", ">= 1.0.0", platforms: %i[ mri mingw x64_mingw ]
+  gem "byebug"
 end
 
 group :development do
