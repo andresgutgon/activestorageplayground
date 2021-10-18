@@ -6,8 +6,9 @@ This repo is to learn about
 - [ ] View Components
 
 ## TODO ActiveStorage
-- [] Read the docs
-- [] Do an upload your avatar UI
+- [x] Do an upload your avatar UI
+- [] Make work [Direct upload](https://edgeguides.rubyonrails.org/active_storage_overview.html#direct-uploads)
+- [] Read [the docs](https://edgeguides.rubyonrails.org/active_storage_overview.html) enterelly
 - [] Deploy to Heroku and host assets on S3 or similar
 
 ## TODO Authentication

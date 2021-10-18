@@ -5,6 +5,34 @@
   </p>
 
   <% if Current.user.avatar.attached? %>
+    <p>Signed Redirect avatar URL:</p>
+    <p><%= url_for(Current.user.avatar) %></p>
+    <hr>
+    <p>Download avatar:</p>
+    <p>
+      <%= link_to "Download", rails_blob_path(Current.user.avatar, disposition: "attachment") %>
+    </p>
+    <hr>
+    <p>
+      <%= image_tag Current.user.avatar %>
+    </p>
+    <p>
+      <%= image_tag Current.user.avatar.variant(:thumb) %>
+    </p>
+    <hr>
+    <p>
+      <%= link_to "Image representation", 'https://edgeguides.rubyonrails.org/active_storage_overview.html#displaying-images-videos-and-pdfs' %>
+      is helpful for displaying PDFs in the browser
+    </p>
+    <p>
+      <% file = Current.user.avatar  %>
+      <% if file.representable? %>
+        <%= image_tag file.representation(resize_to_limit: [30, nil]) %>
+      <% else %>
+        No representable
+      <% end %>
+    </p>
+    <hr>
     <p>
       <%= image_tag Current.user.avatar.variant(:thumb) %>
     </p>
@@ -13,7 +41,7 @@
     <%= form_with model: Current.user, url: profiles_path do |f| %>
       <p>
         <%= f.label :avatar, 'Upload your avatar' %><br>
-        <%= f.file_field :avatar %>
+        <%= f.file_field :avatar, direct_upload: true %>
       </p>
       <p>
         <%= f.submit 'Upload' %>

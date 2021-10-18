@@ -3,7 +3,6 @@ module Account
     before_action :require_current_user!
 
     def update
-      byebug
       if profile_params[:avatar]
         Current.user.avatar.attach(profile_params[:avatar])
       end
