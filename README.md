@@ -2,6 +2,7 @@
 This repo is to learn about
 - [ ] ActiveStorage
 - [ ] Authentication
+- [ ] Mailer styling with Tailwind
 
 ## TODO ActiveStorage
 - [] Read the docs
