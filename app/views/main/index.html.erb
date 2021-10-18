@@ -1,0 +1,30 @@
+<h1>Playing with Things</h1>
+<% if Current.user %>
+  <p>
+    Logged in as: <%= Current.user.email %>
+  </p>
+
+  <% if Current.user.avatar.attached? %>
+    <p>
+      <%= image_tag Current.user.avatar.variant(:thumb) %>
+    </p>
+  <% else %>
+    <hr>
+    <%= form_with model: Current.user, url: profiles_path do |f| %>
+      <p>
+        <%= f.label :avatar, 'Upload your avatar' %><br>
+        <%= f.file_field :avatar %>
+      </p>
+      <p>
+        <%= f.submit 'Upload' %>
+      </p>
+    <% end %>
+    <hr>
+  <% end %>
+
+
+  <%= button_to 'Logout', logout_path, method: :delete %>
+<% else %>
+  <%= link_to 'Log In', log_in_path %> Or
+  <%= link_to 'Sign Up', signup_path %>
+<% end %>

@@ -3,6 +3,7 @@ This repo is to learn about
 - [ ] ActiveStorage
 - [ ] Authentication
 - [ ] Mailer styling with Tailwind
+- [ ] View Components
 
 ## TODO ActiveStorage
 - [] Read the docs
@@ -19,3 +20,10 @@ with all auth mambo jambo with plain [Rails securepassword](https://guides.rubyo
 Try to use [maizzle.com/](https://maizzle.com/). Maizzle is a framework that helps you quickly build HTML emails with
 Tailwind CSS and advanced, email-specific post-processing.
 - [ ] Integrate with Rails. [Looks possible](https://github.com/maizzle/framework/issues/346)
+
+## TODO View components
+- [] Setup [View components](https://github.com/github/view_component)
+- [] Integrate with Rails
+- [] Develop the flash message with a message component
+- [] Read about Story book integration with view components
+- [] Find inspiration in [GitHub Primer](https://github.com/primer/view_components)
