@@ -7,9 +7,11 @@ This repo is to learn about
 
 ## TODO ActiveStorage
 - [x] Do an upload your avatar UI
+- [ ] Setup TailwindCSS with ESBuild
 - [] Make work [Direct upload](https://edgeguides.rubyonrails.org/active_storage_overview.html#direct-uploads)
+- [] Create a `gallery` model related with `User` and add a `gallery.files` attachments.
 - [] Read [the docs](https://edgeguides.rubyonrails.org/active_storage_overview.html) enterelly
-- [] Deploy to Heroku and host assets on S3 or similar
+- [] Deploy to Heroku and host assets on S3 [Digital Ocean Spaces](https://docs.digitalocean.com/products/spaces/)
 
 ## TODO Authentication
 Devise is the fastest way of get up and running. But it would be nice to have a basic setup
