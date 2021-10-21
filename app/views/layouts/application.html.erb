@@ -2,6 +2,9 @@
 <html>
   <head>
     <title>Activestorageplayground</title>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charSet="utf-8"/>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +13,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="min-h-screen flex justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-md w-full space-y-8">
+        <%= render partial: "shared/nav", locals: { user: Current.user } %>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

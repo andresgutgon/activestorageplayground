@@ -1,58 +1,30 @@
-<h1>Playing with Things</h1>
-<% if Current.user %>
-  <p>
-    Logged in as: <%= Current.user.email %>
-  </p>
-
-  <% if Current.user.avatar.attached? %>
-    <p>Signed Redirect avatar URL:</p>
-    <p><%= url_for(Current.user.avatar) %></p>
-    <hr>
-    <p>Download avatar:</p>
-    <p>
-      <%= link_to "Download", rails_blob_path(Current.user.avatar, disposition: "attachment") %>
-    </p>
-    <hr>
-    <p>
-      <%= image_tag Current.user.avatar %>
-    </p>
-    <p>
-      <%= image_tag Current.user.avatar.variant(:thumb) %>
-    </p>
-    <hr>
-    <p>
-      <%= link_to "Image representation", 'https://edgeguides.rubyonrails.org/active_storage_overview.html#displaying-images-videos-and-pdfs' %>
-      is helpful for displaying PDFs in the browser
-    </p>
-    <p>
-      <% file = Current.user.avatar  %>
-      <% if file.representable? %>
-        <%= image_tag file.representation(resize_to_limit: [30, nil]) %>
-      <% else %>
-        No representable
-      <% end %>
-    </p>
-    <hr>
-    <p>
-      <%= image_tag Current.user.avatar.variant(:thumb) %>
-    </p>
-  <% else %>
-    <hr>
-    <%= form_with model: Current.user, url: profiles_path do |f| %>
-      <p>
-        <%= f.label :avatar, 'Upload your avatar' %><br>
-        <%= f.file_field :avatar, direct_upload: true %>
+<div>
+  <header>
+    <h1 class="text-2xl font-bold text-gray-900">
+      Photo gallery
+    </h1>
+  </header>
+  <main>
+    <div class="py-6 space-y-4">
+      <p class="text-sm">
+        Upload your photos here 🚀
       </p>
-      <p>
-        <%= f.submit 'Upload' %>
-      </p>
-    <% end %>
-    <hr>
-  <% end %>
+      <div class="border-4 border-dashed border-gray-200 rounded-lg p-4 space-y-4">
+        <% if Current.user %>
+        <% else  %>
+          <p class="text-sm">
+            This page is just an exercise to understand how works
+            <%= link_to "ActiveStorage", "https://edgeguides.rubyonrails.org/active_storage_overview.html", class: 'font-medium text-indigo-600 hover:text-indigo-500' %> in Rails
+          </p>
+          <p class="text-sm">
+            Login or create an account to play with it 😊
+          </p>
+          <p class="text-sm">
+            <%= link_to "Create an account", signup_path, class: "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+          </p>
+        <% end  %>
+      </div>
+    </div>
+  </main>
+</div>
 
-
-  <%= button_to 'Logout', logout_path, method: :delete %>
-<% else %>
-  <%= link_to 'Log In', log_in_path %> Or
-  <%= link_to 'Sign Up', signup_path %>
-<% end %>

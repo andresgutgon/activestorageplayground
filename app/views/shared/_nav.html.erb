@@ -1,0 +1,32 @@
+<nav>
+  <% align_class = current_page?(root_path) ? 'justify-end' : 'justify-between' %>
+  <div class="flex items-center <%= align_class  %>">
+    <% unless current_page?(root_path) %>
+      <%= link_to root_path, class: "font-medium text-indigo-600 hover:text-indigo-500" do %>
+        &#x2190;&nbsp;Home
+      <% end %>
+    <% end %>
+    <div class="ml-4 flex items-center md:ml-6 space-x-4">
+      <% if Current.user %>
+        <p class="text-sm text-gray-600">
+          <%= button_to 'Logout', logout_path, method: :delete, class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+        </p>
+        <%= link_to edit_profile_path, class: "font-medium text-indigo-600 hover:text-indigo-500" do %>
+          <% if Current.user.avatar.attached? %>
+            <div class="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+              <%= image_tag Current.user.avatar.variant(:thumb), class: "h-8 w-8 rounded-full" %>
+            </div>
+          <% else  %>
+            Add your avatar
+          <% end  %>
+        <% end %>
+      <% else  %>
+        <p class="text-sm text-gray-600">
+          <%= link_to 'Log in', login_path, class: 'font-medium text-indigo-600 hover:text-indigo-500' %>
+          Or
+          <%= link_to 'Create account', signup_path, class: 'font-medium text-indigo-600 hover:text-indigo-500' %>
+        </p>
+      <% end  %>
+    </div>
+  </div>
+</nav>

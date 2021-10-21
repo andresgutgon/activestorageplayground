@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create', as: 'log_in'
     delete 'logout', to: 'sessions#destroy'
-    resource :profiles, only: %i[update]
+    resource :profile, only: %i[edit update] do
+      member do
+        put 'delete_avatar'
+      end
+    end
   end
 
   root 'main#index'

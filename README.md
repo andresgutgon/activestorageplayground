@@ -10,6 +10,7 @@ This repo is to learn about
 - [ ] Setup TailwindCSS with ESBuild
 - [] Make work [Direct upload](https://edgeguides.rubyonrails.org/active_storage_overview.html#direct-uploads)
 - [] Create a `gallery` model related with `User` and add a `gallery.files` attachments.
+- [ ] Understand difference between [Redirect mode](https://edgeguides.rubyonrails.org/active_storage_overview.html#redirect-mode) and [Proxy mode](https://edgeguides.rubyonrails.org/active_storage_overview.html#proxy-mode)
 - [] Read [the docs](https://edgeguides.rubyonrails.org/active_storage_overview.html) enterelly
 - [] Deploy to Heroku and host assets on S3 [Digital Ocean Spaces](https://docs.digitalocean.com/products/spaces/)
 
