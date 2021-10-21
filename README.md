@@ -6,13 +6,22 @@ This repo is to learn about
 - [ ] View Components
 
 ## TODO ActiveStorage
-- [x] Do an upload your avatar UI
-- [ ] Setup TailwindCSS with ESBuild
-- [] Make work [Direct upload](https://edgeguides.rubyonrails.org/active_storage_overview.html#direct-uploads)
-- [] Create a `gallery` model related with `User` and add a `gallery.files` attachments.
+- [x] Read [the docs](https://edgeguides.rubyonrails.org/active_storage_overview.html) enterelly
+- [x] Do upload your avatar UI. Simple Rails ActiveStorage upload.
+- [x] Setup TailwindCSS with ESBuild.
+- [x] Create a `gallery` model related with `User` and add a `gallery.images` attachments.
+- [x] Create images in gallery with direct upload
+- [x] Upade images in gallery with direct upload
+- [x] Make work [Direct upload](https://edgeguides.rubyonrails.org/active_storage_overview.html#direct-uploads)
+- [x] Direct upload progress styles + replace with image
+- [x] Turbo stream the file input as partial becuase after upload it gets `disabled`
+- [x] Drag & drop files in the Dropable area. ~Use ActiveStorage in JS to send the files.~ It was not necessary, just seeting the files in the input=file
+- [x] Show progress in the upload area.
+- [ ] Do something when `direct-upload:error` event happens.
 - [ ] Understand difference between [Redirect mode](https://edgeguides.rubyonrails.org/active_storage_overview.html#redirect-mode) and [Proxy mode](https://edgeguides.rubyonrails.org/active_storage_overview.html#proxy-mode)
-- [] Read [the docs](https://edgeguides.rubyonrails.org/active_storage_overview.html) enterelly
-- [] Deploy to Heroku and host assets on S3 [Digital Ocean Spaces](https://docs.digitalocean.com/products/spaces/)
+- [ ] Deploy to Heroku and host assets on S3 [Digital Ocean Spaces](https://docs.digitalocean.com/products/spaces/)
+- [ ] Or try [Cloudinary](https://cloudinary.com/pricing) which is free and have a nice Rails gem integration.
+- [ ] Understand how using a CDN works.
 
 ## TODO Authentication
 Devise is the fastest way of get up and running. But it would be nice to have a basic setup

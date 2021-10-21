@@ -1,0 +1,44 @@
+<%= form_with(
+  model: gallery,
+  data: {
+    controller: 'dropzone',
+    action: 'dragover->dropzone#acceptDrop drop->dropzone#handleDrop dragleave->dropzone#leaveDrop',
+    'dropzone-uploads-wrapper-dom-id-value': 'gallery',
+    'dropzone-item-template-value': 'gallery_item_template'
+  },
+  class: "dropzone"
+) do |f| %>
+  <div data-dropzone-target="progress" class="absolute top-0 bottom-0 left-0 bg-blue-100 mt-0"></div>
+  <div class="dropzone__content">
+    <%= f.label :images, class: 'flex flex-col items-center cursor-pointer' do %>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 dropzone__text" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd" />
+      </svg>
+      <div class='dropzone__text' data-dropzone-target='textInfo'>
+        Drop here the images or pick from your computer
+      </div>
+      <%=
+        f.file_field(
+          :images,
+          multiple: true,
+          class: 'hidden',
+          direct_upload: true,
+          'data-dropzone-target': 'fileInput'
+        )%>
+    <% end  %>
+    <%=
+      f.button(
+        type: 'submit',
+        class: "group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50",
+        'data-dropzone-target': 'uploadButton'
+      ) do %>
+      Upload
+    <% end %>
+    <%= link_to(
+      'clear files',
+      '#',
+      'data-dropzone-target': 'clearFiles',
+      class: 'hidden text-xs block text-center underline text-blue-600 hover:text-blue-700'
+    )%>
+  </div>
+<% end %>

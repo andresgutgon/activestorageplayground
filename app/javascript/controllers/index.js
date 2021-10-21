@@ -3,5 +3,5 @@
 
 import { application } from "./application"
 
-import OnClickUploadController from "./on_click_upload_controller.js"
-application.register("on_click_upload", OnClickUploadController)
+import DropzoneController from "./dropzone_controller.js"
+application.register("dropzone", DropzoneController)

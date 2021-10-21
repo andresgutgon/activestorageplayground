@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Activestorageplayground</title>
+    <title>ActiveStorage Playground</title>
     <meta name="viewport" content="width=device-width"/>
     <meta charSet="utf-8"/>
 
@@ -10,11 +10,12 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= favicon_link_tag %>
   </head>
 
   <body>
     <div class="min-h-screen flex justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-md w-full space-y-8">
+      <div class="max-w-2xl w-full space-y-8">
         <%= render partial: "shared/nav", locals: { user: Current.user } %>
         <%= yield %>
       </div>

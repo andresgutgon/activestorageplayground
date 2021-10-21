@@ -1,0 +1,24 @@
+<div>
+  <header>
+    <h1 class="text-2xl font-bold text-gray-900">
+      Photo gallery
+    </h1>
+  </header>
+  <main>
+    <div class="py-6 space-y-4">
+      <p class="text-sm">Upload your photos here 🚀</p>
+      <%= render 'shared/if_current_user' do %>
+        <%= render partial: 'my_gallery/galleries/form', locals: { gallery: @gallery } %>
+        <ul id="gallery" class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <% @gallery.images.order(created_at: :desc).each do |image| %>
+            <%= render partial: 'my_gallery/galleries/image', locals: { image: image } %>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </main>
+</div>
+
+<template id="gallery_item_template">
+  <%= render 'my_gallery/galleries/image' %>
+</template>

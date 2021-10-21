@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
-  # Almost every application defines a route for the root path ("/") at the top of this file.
-  # root "articles#index"
   scope module: 'account' do
     get 'signup', to: 'registrations#new'
     post 'signup', to: 'registrations#create'
@@ -17,5 +13,17 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'main#index'
+  # Resolve polimorphic single resource like gallery
+  # Helpful to use form_with @gallery and let Rails generate
+  # the right URLs
+  resolve("Gallery") { [:gallery] }
+  scope module: 'my_gallery' do
+    resource :gallery, only: %i[show create update] do
+      collection do
+        delete :delete_image_attachment
+      end
+    end
+  end
+
+  root 'my_gallery/galleries#show'
 end
