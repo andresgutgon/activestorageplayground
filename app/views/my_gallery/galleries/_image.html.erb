@@ -3,7 +3,7 @@
   # When the image is uploaded.
   image_record = defined?(image) ? image : nil
   turbo_frame_id = image_record ? image_record.signed_id : 'tag-placeholder'
-  image_src = image_record || ''
+  image_src = image_record ? cdn_image_url(image_record.variant(:thumb)) : ''
 %>
 <%= turbo_frame_tag turbo_frame_id do %>
   <li class="relative aspect-w-1 aspect-h-1 shadow-md rounded">
