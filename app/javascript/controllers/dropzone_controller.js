@@ -23,24 +23,9 @@ export default class extends Controller {
     this.uploadButtonTarget.setAttribute('disabled', true)
     this.originalText = this.textInfoTarget.innerText
 
-    this.handleFileChange = (files = []) => {
-      const textInfo = this.textInfoTarget
-      const button = this.uploadButtonTarget
-      const filesCount = files.length
-      if (filesCount) {
-        button.removeAttribute('disabled')
-        textInfo.innerText = `(${filesCount}) files selected`
-        this.showClearFiles()
-      } else {
-        this.hideClearFiles()
-        this.uploadButtonTarget.setAttribute('disabled', true)
-        this.textInfoTarget.innerText = this.originalText
-      }
-    }
-
     this.fileInputTarget.addEventListener(
       'change',
-      () => this.handleFileChange(event.target.files)
+      () => this._handleFileChange(event.target.files)
     )
 
     this.clearFilesTarget.addEventListener(
@@ -115,11 +100,26 @@ export default class extends Controller {
     })
   }
 
+  _handleFileChange = (files = []) => {
+    const textInfo = this.textInfoTarget
+    const button = this.uploadButtonTarget
+    const filesCount = files.length
+    if (filesCount) {
+      button.removeAttribute('disabled')
+      textInfo.innerText = `(${filesCount}) files selected`
+      this.showClearFiles()
+    } else {
+      this.hideClearFiles()
+      this.uploadButtonTarget.setAttribute('disabled', true)
+      this.textInfoTarget.innerText = this.originalText
+    }
+  }
+
   _clearFiles () {
     uploadedFiles = 0
     this.fileInputTarget.removeAttribute('disabled')
     const uploadedHiddenInputFiles = this.element.querySelectorAll(
-      `input[type="hidden"][name="${event.target.name}"]`
+      `input[type="hidden"][name="${this.fileInputTarget.name}"]`
     )
     uploadedHiddenInputFiles.forEach(
       (hiddenInput) => hiddenInput.remove()
@@ -127,7 +127,7 @@ export default class extends Controller {
     this.fileInputTarget.files = null
     this.progressTarget.removeAttribute('style')
 
-    this.handleFileChange()
+    this._handleFileChange()
   }
 
   setProgress () {
@@ -179,6 +179,6 @@ export default class extends Controller {
     const dataTransfer = new DataTransfer();
     this.element.classList.remove(this.dropzoneDroppingClass);
     this.fileInputTarget.files = event.dataTransfer.files;
-    this.handleFileChange(this.fileInputTarget.files)
+    this._handleFileChange(this.fileInputTarget.files)
   }
 }

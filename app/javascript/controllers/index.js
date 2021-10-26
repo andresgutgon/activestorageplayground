@@ -3,5 +3,8 @@
 
 import { application } from "./application"
 
+import AutouploadController from "./autoupload_controller.js"
+application.register("autoupload", AutouploadController)
+
 import DropzoneController from "./dropzone_controller.js"
 application.register("dropzone", DropzoneController)

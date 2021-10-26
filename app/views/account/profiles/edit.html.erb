@@ -30,7 +30,7 @@
               <span class="<%= remove_button_text_class  %> text-xs text-white">Remove</span>
             <% end %>
           <% end  %>
-          <%= form_with model: Current.user, url: profile_path, data: { controller: 'on_click_upload' } do |f| %>
+          <%= form_with model: Current.user, url: profile_path, data: { controller: 'autoupload' } do |f| %>
             <div class="space-y-2">
               <div class='flex items-center justify-center relative'>
                 <%
@@ -47,7 +47,7 @@
                     </svg>
                     <span class='text-xs text-white'>Pick image</span>
                   </div>
-                  <%= f.file_field :avatar, class: 'hidden', data: { action: 'input->on_click_upload#onUpload' } %>
+                  <%= f.file_field :avatar, class: 'hidden', data: { action: 'input->autoupload#onUpload' } %>
                 <% end %>
               </div>
             </div>

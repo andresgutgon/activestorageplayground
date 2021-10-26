@@ -13,12 +13,12 @@ This repo is to learn about
 - [x] Create images in gallery with direct upload
 - [x] Upade images in gallery with direct upload
 - [x] Make work [Direct upload](https://edgeguides.rubyonrails.org/active_storage_overview.html#direct-uploads)
+- [x] Understand difference between [Redirect mode](https://edgeguides.rubyonrails.org/active_storage_overview.html#redirect-mode) and [Proxy mode](https://edgeguides.rubyonrails.org/active_storage_overview.html#proxy-mode)
 - [x] Direct upload progress styles + replace with image
 - [x] Turbo stream the file input as partial becuase after upload it gets `disabled`
 - [x] Drag & drop files in the Dropable area. ~Use ActiveStorage in JS to send the files.~ It was not necessary, just seeting the files in the input=file
 - [x] Show progress in the upload area.
 - [ ] Do something when `direct-upload:error` event happens.
-- [ ] Understand difference between [Redirect mode](https://edgeguides.rubyonrails.org/active_storage_overview.html#redirect-mode) and [Proxy mode](https://edgeguides.rubyonrails.org/active_storage_overview.html#proxy-mode)
 - [ ] Deploy to Heroku and host assets on S3 [Digital Ocean Spaces](https://docs.digitalocean.com/products/spaces/)
 - [ ] Or try [Cloudinary](https://cloudinary.com/pricing) which is free and have a nice Rails gem integration.
 - [ ] Understand how using a CDN works.
