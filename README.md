@@ -1,9 +1,16 @@
 # README
 This repo is to learn about
-- [ ] ActiveStorage
+- [x] ActiveStorage
+- [ ] Search with Elastic Search
 - [ ] Authentication
 - [ ] Mailer styling with Tailwind
 - [ ] View Components
+
+## TODO Elastic Search
+- [x] Read [some ElasticSearch documentation](https://www.elastic.co/guide/index.html)
+- [ ] Setup correctly security for xPack (Elastic products). Passowrd and users
+- [ ] Setup Kibana with Docker compose
+- [ ] Setup Rails app for using Elastic Search server with Elastic Ruby gems. Follow [this article](https://medium.com/wolox/from-zero-to-hero-multimodel-autocompletion-search-with-elasticsearch-rails-3beff17fa8c6)
 
 ## TODO ActiveStorage
 - [x] Read [the docs](https://edgeguides.rubyonrails.org/active_storage_overview.html) enterelly
