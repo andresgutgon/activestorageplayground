@@ -8,8 +8,11 @@ This repo is to learn about
 
 ## TODO Elastic Search
 - [x] Read [some ElasticSearch documentation](https://www.elastic.co/guide/index.html)
-- [ ] Setup correctly security for xPack (Elastic products). Passowrd and users
-- [ ] Setup Kibana with Docker compose
+- [x] Setup Kibana with Docker compose. Kibana is supper nice to debug indexes and see the raw data.
+- [x] Setup password protected Kibana and ElasticSearch.
+- [x] Documemt how to change default built-it user `elastic` password
+- [ ] Create a Elastic user for accessing from the Rails app. Is important to know this can be done
+- [ ] Setup multi node Elastic with SSL. [Explained here](https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-tls-docker.html)
 - [ ] Setup Rails app for using Elastic Search server with Elastic Ruby gems. Follow [this article](https://medium.com/wolox/from-zero-to-hero-multimodel-autocompletion-search-with-elasticsearch-rails-3beff17fa8c6)
 
 ## TODO ActiveStorage
@@ -47,3 +50,37 @@ Tailwind CSS and advanced, email-specific post-processing.
 - [] Develop the flash message with a message component
 - [] Read about Story book integration with view components
 - [] Find inspiration in [GitHub Primer](https://github.com/primer/view_components)
+
+
+## Kibana setup
+The first time you setup Kibana in you machine you need to change the password `KIBANA_PASSWORD` in your `.env.local`
+This command will change and show you in the console all the password in Elastic:
+```
+docker exec es01 /bin/bash -c "bin/elasticsearch-setup-passwords auto --batch --url http://es01:9200"
+```
+Explained [here](https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html)
+
+
+## How to change default elastic user password?
+This is a bit tricky because how you do things if you don't know the password.
+You log into docker bash
+```
+docker ps
+// Pick elastic container ID
+docker exec -it ELASTIC_CONTAINER_ID /bin/bash
+// Create a new super user
+bin/elasticsearch-users useradd new_user_admin_user -p secret -r superuser
+```
+Now we can change the password of default `elastic` user like this:
+```
+curl -u new_user_admin_user:secret -X POST "localhost:9200/_security/user/elastic/_password?pretty" -H 'Content-Type: application/json' -d'
+{ "password": "papapa22" }
+'
+```
+So from now on elastic has a default password we know
+
+### How to see Docker compose generated config?
+with the `docker-composer config` command.
+```
+docker-compose -f docker/docker-compose-local.yml --env-file .env.local config
+```

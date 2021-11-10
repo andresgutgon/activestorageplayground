@@ -6,3 +6,4 @@ network:
 xpack:
   security:
     enabled: true
+

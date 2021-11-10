@@ -4,13 +4,12 @@ services:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.15.1
     container_name: es01
     environment:
-      - bootstrap.memory_lock=${ELASTIC_SEARCH_MEMORY_BLOCK}
-      - ES_JAVA_OPTS=${ELASTIC_JAVA_OPTIONS}
-      - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
+      'bootstrap.memory_lock': ${ELASTIC_SEARCH_MEMORY_BLOCK}
+      'node.name': es01
+      'discovery.type': single-node
 
-      - node.name=es01
-      - discovery.seed_hosts=es02,es03
-      - cluster.initial_master_nodes=es01,es02,es03
+      ES_JAVA_OPTS: ${ELASTIC_JAVA_OPTIONS}
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD}
     ulimits:
       memlock:
         soft: -1
@@ -22,60 +21,18 @@ services:
       - 9200:9200
     networks:
       - elastic
-  es02:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.1
-    container_name: es02
-    environment:
-      - bootstrap.memory_lock=${ELASTIC_SEARCH_MEMORY_BLOCK}
-      - ES_JAVA_OPTS=${ELASTIC_JAVA_OPTIONS}
-      - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
-
-      - node.name=es02
-      - discovery.seed_hosts=es01,es03
-      - cluster.initial_master_nodes=es01,es02,es03
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - data02:$PWD/tmp/elasticsearch/data
-      - $PWD/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
-    networks:
-      - elastic
-  es03:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.1
-    container_name: es03
-    environment:
-      - bootstrap.memory_lock=${ELASTIC_SEARCH_MEMORY_BLOCK}
-      - ES_JAVA_OPTS=${ELASTIC_JAVA_OPTIONS}
-      - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
-
-      - node.name=es03
-      - discovery.seed_hosts=es01,es02
-      - cluster.initial_master_nodes=es01,es02,es03
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - data03:$PWD/tmp/elasticsearch/data
-      - $PWD/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
-    networks:
-      - elastic
   kibana:
     image: docker.elastic.co/kibana/kibana:7.15.1
     container_name: kibana_ui
     volumes:
       - kibana_volume:/usr/share/kibana
     environment:
-      ELASTICSEARCH_HOSTS: '["http://es01:9200","http://es02:9200","http://es03:9200"]'
-      XPACK_SECURITY_ENABLED: "false"
+      ELASTICSEARCH_HOSTS: '["http://es01:9200"]'
+      XPACK_SECURITY_ENABLED: 'true'
       ELASTICSEARCH_USERNAME: ${KIBANA_USER}
       ELASTICSEARCH_PASSWORD: ${KIBANA_PASSWORD}
     depends_on:
       - es01
-      - es02
-      - es03
     networks:
       - elastic
     ports:
@@ -83,10 +40,6 @@ services:
 
 volumes:
   data01:
-    driver: local
-  data02:
-    driver: local
-  data03:
     driver: local
   kibana_volume:
     driver: local
