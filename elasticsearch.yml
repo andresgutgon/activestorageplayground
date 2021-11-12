@@ -1,0 +1,20 @@
+cluster:
+  name: "docker-cluster-learning"
+network:
+  host: 0.0.0.0
+
+xpack:
+  license:
+    self_generated:
+      type: 'trial'
+  security:
+    enabled: true
+    http:
+      ssl:
+        verification_mode: 'certificate'
+        enabled: true
+    transport:
+      ssl:
+        verification_mode: 'certificate'
+        enabled: true
+

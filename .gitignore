@@ -34,3 +34,4 @@
 
 /node_modules
 .byebug_history
+/docker/elasticsearch-ssl-certificate/certs

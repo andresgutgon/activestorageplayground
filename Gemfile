@@ -39,9 +39,14 @@ gem "bootsnap", ">= 1.4.4", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 
+# Elastic Search
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
 group :development, :test do
   # Start debugger with binding.b [https://github.com/ruby/debug]
   gem "byebug"
+  gem "dotenv-rails"
 end
 
 group :development do
