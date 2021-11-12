@@ -8,13 +8,16 @@ This repo is to learn about
 
 ## TODO Elastic Search
 - [x] Read [some ElasticSearch documentation](https://www.elastic.co/guide/index.html)
-- [x] Setup Kibana with Docker compose. Kibana is supper nice to debug indexes and see the raw data.
+- [x] Setup Kibana with Docker compose. Kibana is super nice to debug indexes and see the raw data.
 - [x] Setup password protected Kibana and ElasticSearch.
 - [x] Documemt how to change default built-it user `elastic` password
 - [x] Understand how Docker volumes work to be able to fix SSL generating on ElasticSearch docker-compose
 - [x] Setup multi node Elastic with SSL. [Explained here](https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-tls-docker.html)
 - [x] Access Elastic search from Rails with SSL enabled. CA certicate not working
 - [ ] Setup Rails app for using Elastic Search server with Elastic Ruby gems. Follow [this article](https://medium.com/wolox/from-zero-to-hero-multimodel-autocompletion-search-with-elasticsearch-rails-3beff17fa8c6)
+- [ ] Do a fuzzy finder with Rails / Hotwire / Elastic
+- [ ] Do a data stream feed by Rails models and render Charts in the Browser. Learn from Kibana
+- [ ] Do a map search of things by GEO coordenates stored in Rails models. Also filter by other criteria and render the map in the browser
 
 ## TODO ActiveStorage
 - [x] Read [the docs](https://edgeguides.rubyonrails.org/active_storage_overview.html) enterelly
