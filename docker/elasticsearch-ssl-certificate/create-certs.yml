@@ -1,0 +1,31 @@
+version: '2.2'
+
+services:
+  create_certs:
+    container_name: create_certs
+    image: docker.elastic.co/elasticsearch/elasticsearch:$ELASTIC_VERSION
+    command: >
+      bash -c '
+        echo "Hola volumes" > /certs/lol.txt
+        if [[ ! -f /certs/bundle.zip ]]; then
+          bin/elasticsearch-certutil cert --silent --pem --in config/certificates/instances.yml -out /certs/bundle.zip;
+          unzip /certs/bundle.zip -d /certs;
+        fi;
+        chown -R 1000:0 /certs
+      '
+    user: "0"
+    working_dir: /usr/share/elasticsearch
+    volumes:
+      - certs:/certs
+      - $PWD/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - .:/usr/share/elasticsearch/config/certificates
+    networks:
+      - elastic
+
+volumes:
+  certs:
+    driver: local
+
+networks:
+  elastic:
+    driver: bridge

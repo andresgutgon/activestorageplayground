@@ -11,8 +11,9 @@ This repo is to learn about
 - [x] Setup Kibana with Docker compose. Kibana is supper nice to debug indexes and see the raw data.
 - [x] Setup password protected Kibana and ElasticSearch.
 - [x] Documemt how to change default built-it user `elastic` password
-- [ ] Create a Elastic user for accessing from the Rails app. Is important to know this can be done
-- [ ] Setup multi node Elastic with SSL. [Explained here](https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-tls-docker.html)
+- [x] Understand how Docker volumes work to be able to fix SSL generating on ElasticSearch docker-compose
+- [x] Setup multi node Elastic with SSL. [Explained here](https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-tls-docker.html)
+- [ ] Access Elastic search from Rails with SSL enabled. CA certicate not working
 - [ ] Setup Rails app for using Elastic Search server with Elastic Ruby gems. Follow [this article](https://medium.com/wolox/from-zero-to-hero-multimodel-autocompletion-search-with-elasticsearch-rails-3beff17fa8c6)
 
 ## TODO ActiveStorage
